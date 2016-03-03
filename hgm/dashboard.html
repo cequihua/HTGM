@@ -1,0 +1,153 @@
+
+<!DOCTYPE html>
+<html lang="es" class="no-js">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="robots" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <title>Dashoard</title>
+    <link rel="stylesheet" type="text/css" href="bower_components/animate.css/animate.min.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="bower_components/normalize-css/normalize.css" media="screen">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/styles.css">
+    <link href="https://fontastic.s3.amazonaws.com/stQEBd3HtLaPRJi27zFcHc/icons.css" rel="stylesheet">
+    <script src="bower_components/sprockets-modernizr/modernizr.js"></script>
+</head>
+
+<body class="panel">
+    <section id="container">
+        <header class="container cd-header">
+            <a href="#0" class="cd-logo"><h1>HGM Technology</h1></a>
+            <a href="#0" class="cd-3d-nav-trigger">
+			Menu
+			<span></span>
+		</a>
+        </header>
+        <main class="container">
+            <!-- Inicia el contenido de la pantalla -->
+            <section class="clearfix">
+                <article id="mod_caudal" class="modulo grid_3">
+                    <h2>Caudal</h2>
+                    <div class="chart lps" data-percent="0" id="chart-caudal"><span id="dat-caudal">0</span>
+                    </div>
+                    <canvas id="caudal-graf" class="grafica" width="265" height="180"></canvas>
+                    <buttom class="btn btn-1 btn-1b active">Semana</buttom>
+                    <buttom class="btn btn-1 btn-1b">Mes</buttom>
+                    <buttom class="btn btn-1 btn-1b">Año</buttom>
+                    <h3 class="total">Total: <span id="caudal-total">356</span><span>m<sup>3</sup></span></h3>
+                </article>
+                
+                 <article id="mod_energia" class="modulo grid_3">
+                    <h2 class="icon-three-bars" id="energia-select">Energía</h2>
+                    <ul id="energia-op">
+                        <li>Instantaneo</li>
+                        <li>Generada</li>
+                        <li class="active">Consumida</li>
+                    </ul>
+                    <div class="chart kwh" data-percent="0" id="chart-energia"><span id="dat-energia">0</span>
+                    </div>
+                    <canvas id="energia-graf" class="grafica" width="265" height="180"></canvas>
+                    <buttom class="btn btn-1 btn-1b active">Semana</buttom>
+                    <buttom class="btn btn-1 btn-1b">Mes</buttom>
+                    <buttom class="btn btn-1 btn-1b">Año</buttom>
+                    <h3 class="total">Total: <span id="energia-total">38600</span><span>kWh</span></h3>
+                </article>
+                
+                <article id="mod_calidad" class="modulo grid_3 hidden">
+                    <h2>Calidad del agua</h2>
+                    <div class="progress">
+                        <div class="progress-bar ph animated fadeInLeft"></div>
+                    </div>
+                    <span class="propiedad">pH</span>
+                    <span class="valor">7</span>
+                    <div class="progress">
+                        <div class="progress-bar animated fadeInLeft" style="width:40%;"></div>
+                    </div>
+                    <span class="propiedad">DQO</span>
+                    <span class="valor">100</span>
+                    <div id="calidad" class="clearfix">
+                        <img src="images/precipitado.svg" class="animated bounceInUp">
+                        <div>
+                            <span class="propiedad">SST</span>
+                            <span id="sst">30</span>
+                            <span class="mgl">mg/l</span>
+                        </div>
+                    </div>
+                </article>
+                
+                <article id="mod_presion" class="modulo grid_3">
+                    <h2>Presión</h2>
+                    <div class="chart psi" data-percent="0" id="chart-presion"><span id="dat-presion">0</span>
+                    </div>
+                </article>
+                
+                <article id="mod_voltaje" class="modulo grid_3">
+                    <h2>Voltaje</h2>
+                        <div class="chart volt" data-percent="0" id="chart-voltaje"><span id="dat-voltaje">0</span>
+                    </div>
+                </article>
+                
+                <article id="mod_amp" class="modulo grid_3">
+                    <h2>Amperaje</h2>
+                    <div class="chart amp" data-percent="0" id="chart-amp"><span id="dat-amp">0</span>
+                    </div>
+                </article>
+                
+                <article id="mod_presion" class="modulo grid_3">
+                    <h2>Apagado/prendido remoto</h2>
+                    <p><p>
+                    <a href="#" class="toggle toggle--off"></a>
+                </article>  
+                <article id="mod_presion" class="modulo grid_3">
+                    <h2>Motrar Reporte</h2>
+                    <p><p>
+                    <button onclick="javascript:mostrar_reporte();">Aceptar</button>
+                </article>   
+            </section>
+        </main>
+
+        <nav class="cd-3d-nav-container">
+            <ul class="cd-3d-nav">
+                <li class="cd-selected">
+                    <a href="#0">Dashboard</a>
+                </li>
+                <li>
+                    <a href="#0">Projects</a>
+                </li>
+                <li>
+                    <a href="#0">Images</a>
+                </li>
+                <li>
+                    <a href="#0">Settings</a>
+                </li>
+                <li>
+                    <a href="#0">Logout</a>
+                </li>
+            </ul>
+            <!-- /cd-3d-nav -->
+            <span class="cd-marker color-1"></span>	
+        </nav>
+        <!-- /cd-3d-nav-container -->
+
+        <footer>HGM Technology <span id="currentYear"></span> © Todos los derechos reservados
+            <a href=""></a>
+        </footer>
+    </section>
+    <!-- !Scripts -->
+    <!-- !jQuery -->
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <!-- Menú -->
+    <script src="js/min/main-min.js"></script>
+    <!-- Easy pie chart -->
+    <script src="bower_components/easy-pie-chart/dist/jquery.easypiechart.min.js"></script>
+    <!-- Chart.js -->
+    <script src="bower_components/Chart.js/Chart.min.js"></script>
+    <!-- Mi programación -->
+    <script src="js/programacion.js"></script>
+
+</body>
+
+</html>
